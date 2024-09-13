@@ -1,0 +1,10 @@
+{
+  "name": "com.unity.unityrenderstreamingwebservice",
+  "displayName": "UnityRenderStreamingWebService",
+  "version": "1.0.0",
+  "unity": "2019.4",
+  "description": "This is a package for using Unity Render Streaming WebService.",
+  "dependencies": {
+	  "com.unity.nuget.newtonsoft-json":"3.1.0"
+  }
+}
