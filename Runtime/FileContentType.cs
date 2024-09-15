@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using System;
 
-public class FileContentType
+namespace UnityRenderStreamingWebService
 {
-    private static IDictionary<string, string> _mappings = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase) {
+    public class FileContentType
+    {
+        private static IDictionary<string, string> _mappings = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase) {
  
      #region Big freaking list of mime types
      // combination of values from Windows 7 Registry and
@@ -572,20 +574,21 @@ public class FileContentType
  
      };
 
-    public static string GetMimeType(string extension)
-    {
-        if (extension == null)
+        public static string GetMimeType(string extension)
         {
-            throw new ArgumentNullException("extension");
+            if (extension == null)
+            {
+                throw new ArgumentNullException("extension");
+            }
+
+            if (!extension.StartsWith("."))
+            {
+                extension = "." + extension;
+            }
+
+            string mime;
+
+            return _mappings.TryGetValue(extension, out mime) ? mime : "application/octet-stream";
         }
-
-        if (!extension.StartsWith("."))
-        {
-            extension = "." + extension;
-        }
-
-        string mime;
-
-        return _mappings.TryGetValue(extension, out mime) ? mime : "application/octet-stream";
     }
 }

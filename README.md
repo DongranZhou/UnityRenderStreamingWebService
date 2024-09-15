@@ -10,7 +10,7 @@
 - [UnityRenderStreaming](https://github.com/Unity-Technologies/UnityRenderStreaming) 内已包含 [websocket-sharp](https://github.com/sta/websocket-sharp) 否则需要单独安装
 - Mono 在进行 `http` 请求时，Content-Length 不得为`空`或`0`， 代码[HttpRequest.MakeInputStream](https://github.com/mono/mono/blob/0f53e9e151d92944cacab3e24ac359410c606df6/mcs/class/System.Web/System.Web/HttpRequest.cs#L819)
   可尝试更改代码。`websocket` 模式不受影响
-- [HttpSignaling.cs](https://github.com/Unity-Technologies/UnityRenderStreaming/blob/main/com.unity.renderstreaming/Runtime/Scripts/Signaling/HttpSignaling.cs#L245)
+- [HttpSignaling.cs](https://github.com/Unity-Technologies/UnityRenderStreaming/blob/main/com.unity.renderstreaming/Runtime/Scripts/Signaling/HttpSignaling.cs#L245)  将ContentLength改为1使用
 
 ```csharp
 private bool HTTPCreate()
@@ -27,7 +27,7 @@ private bool HTTPCreate()
 }
 ```
 
-- [signaling.js](https://github.com/Unity-Technologies/UnityRenderStreaming/blob/main/WebApp/client/src/signaling.js#L30)
+- [signaling.js](https://github.com/Unity-Technologies/UnityRenderStreaming/blob/main/WebApp/client/src/signaling.js#L30) 添加数据
 
 ```javascript
 async start() {
